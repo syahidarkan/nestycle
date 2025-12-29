@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { Html5Qrcode, Html5QrcodeSupportedFormats } from 'html5-qrcode';
-import { XMarkIcon, CameraIcon } from '@heroicons/react/24/outline';
+import { Html5Qrcode } from 'html5-qrcode';
+import { CameraIcon } from '@heroicons/react/24/outline';
 
 interface QRScannerProps {
   onScan: (decodedText: string) => void;
@@ -35,16 +35,13 @@ const QRScanner: React.FC<QRScannerProps> = ({ onScan, onError, isActive }) => {
         {
           fps: 15,
           qrbox: { width: 300, height: 300 },
-          formatsToSupport: [
-            Html5QrcodeSupportedFormats.QR_CODE,
-          ],
         },
         (decodedText) => {
           console.log('✅ QR Code detected:', decodedText);
           onScan(decodedText);
           stopScanner();
         },
-        (errorMessage) => {
+        () => {
           // Silent error handling - QR not found is normal
         }
       );

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useNavigate, useLocation } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useCart } from '../../contexts/CartContext';
 import { useAuth } from '../../contexts/AuthContext';
 import { usePoints } from '../../contexts/PointsContext';
@@ -16,7 +16,6 @@ import LoadingSpinner from '../../components/shared/LoadingSpinner';
 
 const Checkout: React.FC = () => {
   const navigate = useNavigate();
-  const location = useLocation();
   const { cart, clearCart, getTotalPoints } = useCart();
   const { user, refreshUser } = useAuth();
   const { createRedemption } = usePoints();
@@ -63,7 +62,8 @@ const Checkout: React.FC = () => {
       };
 
       createRedemption(redemptionData);
-// Refresh user data to show updated points      refreshUser();
+      // Refresh user data to show updated points
+      refreshUser();
 
       // Save code for display
       if (code) {

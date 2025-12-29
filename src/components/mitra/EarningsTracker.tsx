@@ -1,6 +1,6 @@
 import React, { useMemo } from 'react';
 import type { Transaction } from '../../types';
-import { formatCurrency, formatDate, formatNumber } from '../../utils/formatting';
+import { formatCurrency, formatDate } from '../../utils/formatting';
 import { BanknotesIcon, ArrowTrendingUpIcon, CalendarIcon } from '@heroicons/react/24/outline';
 
 interface EarningsTrackerProps {

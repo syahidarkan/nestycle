@@ -57,7 +57,7 @@ const App: React.FC = () => {
               <Route
                 path="/customer/dashboard"
                 element={
-                  <ProtectedRoute role="customer">
+                  <ProtectedRoute allowedRoles={['customer']}>
                     <Layout>
                       <CustomerDashboard />
                     </Layout>
@@ -67,7 +67,7 @@ const App: React.FC = () => {
               <Route
                 path="/customer/profile"
                 element={
-                  <ProtectedRoute role="customer">
+                  <ProtectedRoute allowedRoles={['customer']}>
                     <Layout>
                       <Profile />
                     </Layout>
@@ -77,7 +77,7 @@ const App: React.FC = () => {
               <Route
                 path="/customer/history"
                 element={
-                  <ProtectedRoute role="customer">
+                  <ProtectedRoute allowedRoles={['customer']}>
                     <Layout>
                       <History />
                     </Layout>
@@ -87,7 +87,7 @@ const App: React.FC = () => {
               <Route
                 path="/customer/redeem"
                 element={
-                  <ProtectedRoute role="customer">
+                  <ProtectedRoute allowedRoles={['customer']}>
                     <Layout>
                       <Redeem />
                     </Layout>
@@ -97,7 +97,7 @@ const App: React.FC = () => {
               <Route
                 path="/customer/checkout"
                 element={
-                  <ProtectedRoute role="customer">
+                  <ProtectedRoute allowedRoles={['customer']}>
                     <Layout>
                       <Checkout />
                     </Layout>
@@ -107,7 +107,7 @@ const App: React.FC = () => {
               <Route
                 path="/customer/orders"
                 element={
-                  <ProtectedRoute role="customer">
+                  <ProtectedRoute allowedRoles={['customer']}>
                     <Layout>
                       <Orders />
                     </Layout>
@@ -119,7 +119,7 @@ const App: React.FC = () => {
               <Route
                 path="/mitra/dashboard"
                 element={
-                  <ProtectedRoute role="mitra">
+                  <ProtectedRoute allowedRoles={['mitra']}>
                     <Layout>
                       <MitraDashboard />
                     </Layout>
@@ -129,7 +129,7 @@ const App: React.FC = () => {
               <Route
                 path="/mitra/profile"
                 element={
-                  <ProtectedRoute role="mitra">
+                  <ProtectedRoute allowedRoles={['mitra']}>
                     <Layout>
                       <Profile />
                     </Layout>
@@ -139,7 +139,7 @@ const App: React.FC = () => {
               <Route
                 path="/mitra/scan"
                 element={
-                  <ProtectedRoute role="mitra">
+                  <ProtectedRoute allowedRoles={['mitra']}>
                     <Layout>
                       <Scan />
                     </Layout>
@@ -149,7 +149,7 @@ const App: React.FC = () => {
               <Route
                 path="/mitra/collections"
                 element={
-                  <ProtectedRoute role="mitra">
+                  <ProtectedRoute allowedRoles={['mitra']}>
                     <Layout>
                       <Collections />
                     </Layout>
@@ -159,7 +159,7 @@ const App: React.FC = () => {
               <Route
                 path="/mitra/earnings"
                 element={
-                  <ProtectedRoute role="mitra">
+                  <ProtectedRoute allowedRoles={['mitra']}>
                     <Layout>
                       <Earnings />
                     </Layout>

@@ -6,7 +6,6 @@ import {
   MapPinIcon,
   CheckCircleIcon,
   ArrowRightIcon,
-  ShoppingBagIcon,
 } from '@heroicons/react/24/outline';
 
 const Landing: React.FC = () => {
@@ -47,7 +46,7 @@ const Landing: React.FC = () => {
             <div>
               <div className="inline-flex items-center space-x-2 bg-success/10 text-success px-2 sm:px-3 py-1 sm:py-1.5 rounded-full text-xs font-semibold mb-3 sm:mb-4">
                 <CheckCircleIcon className="w-3 h-3 sm:w-4 sm:h-4" />
-                <span class="text-[10px] sm:text-xs">Official Nestle Indonesia Program</span>
+                <span className="text-[10px] sm:text-xs">Official Nestle Indonesia Program</span>
               </div>
 
               <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-neutral-900 mb-3 sm:mb-4 leading-tight">

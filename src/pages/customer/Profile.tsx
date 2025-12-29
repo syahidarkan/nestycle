@@ -2,14 +2,12 @@ import React, { useState } from 'react';
 import { useAuth } from '../../contexts/AuthContext';
 import { validateName, validatePhone, validateAddress, validatePassword } from '../../utils/validation';
 import { UserCircleIcon, CameraIcon, CheckCircleIcon } from '@heroicons/react/24/outline';
-import LoadingSpinner from '../../components/shared/LoadingSpinner';
 
 const Profile: React.FC = () => {
   const { user, updateUser } = useAuth();
   const [isEditing, setIsEditing] = useState(false);
   const [isChangingPassword, setIsChangingPassword] = useState(false);
   const [success, setSuccess] = useState('');
-  const [error, setError] = useState('');
 
   const [formData, setFormData] = useState({
     name: user?.name || '',
@@ -36,7 +34,6 @@ const Profile: React.FC = () => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
     setErrors(prev => ({ ...prev, [name]: '' }));
-    setError('');
     setSuccess('');
   };
 
@@ -44,7 +41,6 @@ const Profile: React.FC = () => {
     const { name, value } = e.target;
     setPasswordData(prev => ({ ...prev, [name]: value }));
     setErrors(prev => ({ ...prev, [name]: '' }));
-    setError('');
   };
 
   const handleSaveProfile = () => {

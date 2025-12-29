@@ -11,8 +11,6 @@ import {
   ViewfinderCircleIcon,
   CheckCircleIcon,
   XCircleIcon,
-  PlusIcon,
-  MinusIcon,
 } from '@heroicons/react/24/outline';
 import LoadingSpinner from '../shared/LoadingSpinner';
 
@@ -143,39 +141,6 @@ const ScanInterface: React.FC<ScanInterfaceProps> = ({ packagingTypes }) => {
     setScannedPackaging(null);
     setSuccess(`Added ${scannedPackaging.name}!`);
     setTimeout(() => setSuccess(''), 2000);
-  };
-
-  const handleUpdateQuantity = (packagingId: string, delta: number) => {
-    if (!scanSession) return;
-
-    const item = scanSession.scannedItems.find(i => i.packagingType.id === packagingId);
-    if (!item) return;
-
-    const newQuantity = item.quantity + delta;
-    if (newQuantity <= 0) {
-      // Remove item
-      const pointsToRemove = item.packagingType.points * item.quantity;
-      const commissionToRemove = COMMISSION_RATES.COLLECTION * item.quantity;
-
-      setScanSession({
-        ...scanSession,
-        scannedItems: scanSession.scannedItems.filter(i => i.packagingType.id !== packagingId),
-        totalPoints: scanSession.totalPoints - pointsToRemove,
-        totalCommission: scanSession.totalCommission - commissionToRemove,
-      });
-    } else {
-      const pointsDelta = item.packagingType.points * delta;
-      const commissionDelta = COMMISSION_RATES.COLLECTION * delta;
-
-      setScanSession({
-        ...scanSession,
-        scannedItems: scanSession.scannedItems.map(i =>
-          i.packagingType.id === packagingId ? { ...i, quantity: newQuantity } : i
-        ),
-        totalPoints: scanSession.totalPoints + pointsDelta,
-        totalCommission: scanSession.totalCommission + commissionDelta,
-      });
-    }
   };
 
   const handleCompleteTransaction = async () => {

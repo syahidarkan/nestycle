@@ -1,4 +1,5 @@
-import React, { createContext, useContext, ReactNode } from 'react';
+import React, { createContext, useContext } from 'react';
+import type { ReactNode } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import type { Transaction, Redemption, PointsContextType, RedemptionStatus, User } from '../types';
 import { generateTrackingNumber } from '../utils/formatting';

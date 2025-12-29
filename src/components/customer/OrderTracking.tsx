@@ -1,6 +1,6 @@
 import React from 'react';
 import type { Redemption, RedemptionStatus } from '../../types';
-import { formatDateTime, formatCurrency, formatNumber } from '../../utils/formatting';
+import { formatDateTime, formatNumber } from '../../utils/formatting';
 import {
   CheckCircleIcon,
   ClockIcon,

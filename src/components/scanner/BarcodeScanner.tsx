@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { Html5Qrcode, Html5QrcodeSupportedFormats } from 'html5-qrcode';
+import { Html5Qrcode } from 'html5-qrcode';
 import { CameraIcon } from '@heroicons/react/24/outline';
 
 interface BarcodeScannerProps {
@@ -36,22 +36,12 @@ const BarcodeScanner: React.FC<BarcodeScannerProps> = ({ onScan, onError, isActi
           fps: 10,
           qrbox: { width: 350, height: 180 },
           aspectRatio: 1.77,
-          formatsToSupport: [
-            Html5QrcodeSupportedFormats.QR_CODE,
-            Html5QrcodeSupportedFormats.EAN_13,
-            Html5QrcodeSupportedFormats.EAN_8,
-            Html5QrcodeSupportedFormats.UPC_A,
-            Html5QrcodeSupportedFormats.UPC_E,
-            Html5QrcodeSupportedFormats.CODE_39,
-            Html5QrcodeSupportedFormats.CODE_93,
-            Html5QrcodeSupportedFormats.CODE_128,
-          ],
         },
         (decodedText) => {
           console.log('✅ Barcode detected:', decodedText);
           onScan(decodedText);
         },
-        (errorMessage) => {
+        () => {
           // Silent error handling - barcode not found is normal
         }
       );
