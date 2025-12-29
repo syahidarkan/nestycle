@@ -69,7 +69,7 @@ const ScanInterface: React.FC<ScanInterfaceProps> = ({ packagingTypes }) => {
       }
 
       // Only create new session if we don't have one, or it's empty
-      if (!scanSession || scanSession.scannedItems.length === 0) {
+      if (!scanSession || (scanSession.scannedItems?.length ?? 0) === 0) {
         setScanSession({
           customerId: customer.id,
           customerName: customer.name,
