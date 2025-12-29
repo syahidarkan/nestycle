@@ -47,8 +47,8 @@ const ScanInterface: React.FC<ScanInterfaceProps> = ({ packagingTypes }) => {
       // Only process QR scans when we're in customer step
       if (step !== 'customer') return;
 
-      // Don't process if we already have an active session
-      if (scanSession) return;
+      // Don't process if we already have an active session with items
+      if (scanSession && scanSession.scannedItems.length > 0) return;
 
       isProcessingQR.current = true;
       const customerData = JSON.parse(atob(decodedText));
@@ -68,23 +68,19 @@ const ScanInterface: React.FC<ScanInterfaceProps> = ({ packagingTypes }) => {
         return;
       }
 
-      // Only create new session if we don't have one, or it's empty
-      if (!scanSession || (scanSession.scannedItems?.length ?? 0) === 0) {
-        setScanSession({
-          customerId: customer.id,
-          customerName: customer.name,
-          scannedItems: [],
-          totalPoints: 0,
-          totalCommission: 0,
-        });
+      // Create new session
+      setScanSession({
+        customerId: customer.id,
+        customerName: customer.name,
+        scannedItems: [],
+        totalPoints: 0,
+        totalCommission: 0,
+      });
 
-        setStep('bottle');
-        setSuccess(`Customer ${customer.name} verified!`);
-        setTimeout(() => setSuccess(''), 3000);
-        // isProcessingQR will be reset by useEffect when step changes
-      } else {
-        isProcessingQR.current = false;
-      }
+      setStep('bottle');
+      setSuccess(`Customer ${customer.name} verified!`);
+      setTimeout(() => setSuccess(''), 3000);
+      // isProcessingQR will be reset by useEffect when step changes
     } catch (err) {
       setError('Invalid QR code format');
       isProcessingQR.current = false;
